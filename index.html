@@ -41,10 +41,21 @@
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam distinctio repellat illo excepturi iusto! Mollitia quibusdam est enim ex itaque ipsum, et reiciendis sapiente praesentium iure accusantium eaque laudantium consequatur quo nostrum iste. Eaque, delectus expedita illo maiores quia dignissimos! Distinctio ipsum quam perspiciatis ratione atque consectetur facilis ad earum.</p>
   <button id="btnStandard">кнопка для стандартного тега</button>
   <button class="btnAdvanced">кнопка для расширенного тега тега</button>
+  <button class="counter">просто счётчик кликов: 0</button>
 
   <script>
+    let counter = 0;
+
+    document.querySelector('.counter').addEventListener('click', e=> {
+      e.target.innerText = `просто счётчик кликов: ${Number(++counter)}`;
+
+      counter = String(counter);
+    });
+    
     document.querySelector('#btnStandard').addEventListener('click', ()=> console.log('click btnStandard'));
     document.querySelector('.btnAdvanced').addEventListener('click', ()=> console.log('click btnAdvanced'));
+
+
   </script>
 </body>
 </html>
