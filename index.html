@@ -36,6 +36,12 @@
     #input1 {
       margin: 8px 0 8px 0;
     }
+    .ytmParam {
+      margin: 30px 0 0 0;
+      width: fit-content;
+      border: 2px solid teal;
+      padding: 4px;
+    }
   </style>
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -56,23 +62,44 @@
   <h3>h3 заголовок</h3>
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam distinctio repellat illo excepturi iusto! Mollitia quibusdam est enim ex itaque ipsum, et reiciendis sapiente praesentium iure accusantium eaque laudantium consequatur quo nostrum iste. Eaque, delectus expedita illo maiores quia dignissimos! Distinctio ipsum quam perspiciatis ratione atque consectetur facilis ad earum.</p>
   <button class="counter">просто счётчик кликов - предположим iid: 0</button>
-  <p><b>Revenue:</b> <span id="revenue">10000$</span></p>
-  <p><b>Client_ID:</b> просто объявлен в глобальную переменную window.exampleClientID</p>
+  <p><b>Revenue:</b> <span id="revenue">'10000$'</span></p>
+  <p><b>Client_ID:</b> 'AbCd-1234'</p>
   <label>Значение для переменной 'opt1'<input id="input1" type="text"></label>
   <label>Значение для переменной 'opt2'<input id="input2" type="text"></label>
   <div class="callTag">
     <button id="btnStandard">кнопка для вызова стандартного тега</button>
     <button class="btnAdvanced">кнопка для вызова расширенного тега c re + cid + iid + opt1 + opt2</button>
   </div>
+  <div class="ytmParam">
+    ytmParam:
+  </div>
   
   <script>
-    window.exampleClientID = 'AbCd-1234';
-    window.counter = 0;
+    window.ytmParam = {};
+
+    ytmParam.revenue = '10000$';
+    ytmParam.clientID = 'AbCd-1234';
+    ytmParam.counter = 0;
+
+    let paramDiv = document.querySelector('.ytmParam');
+    paramDiv.innerText = 'ytmParam:\n' + JSON.stringify(ytmParam);
 
     document.querySelector('.counter').addEventListener('click', e=> {
-      e.target.innerText = `просто счётчик кликов - предположим iid: ${++counter}`;
+      e.target.innerText = `просто счётчик кликов - предположим iid: ${++ytmParam.counter}`;
+
+      paramDiv.innerText = 'ytmParam:\n' + JSON.stringify(ytmParam);
     });
     
+    document.querySelector('#input1').addEventListener('change', e=> {
+      ytmParam.opt1 = e.target.value;
+
+      paramDiv.innerText = 'ytmParam:\n' + JSON.stringify(ytmParam);
+    });
+    document.querySelector('#input2').addEventListener('change', e=> {
+      ytmParam.opt2 = e.target.value;
+
+      paramDiv.innerText = 'ytmParam:\n' + JSON.stringify(ytmParam);
+    });
   </script>
 </body>
 </html>
