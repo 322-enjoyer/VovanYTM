@@ -15,10 +15,26 @@
       margin: 0 auto;
     }
     button {
+      margin: 10px 0 0 0;
+      padding: 5px;
       cursor: pointer;
       &:hover {
         background: goldenrod;
       }
+    }
+    label{
+      display: block;
+    }
+    .callTag {
+      display: flex;
+      gap: 10px;
+    }
+    label:has(#input2) {
+      padding:0 0 8px 0;
+      border-bottom: 2px solid black;
+    }
+    #input1 {
+      margin: 8px 0 8px 0;
     }
   </style>
   <!-- Yandex.Metrika counter -->
@@ -36,26 +52,27 @@
   <!-- /Yandex.Metrika counter -->
 </head>
 <body>
-  <h1>Главная страница теста YTM</h1>
-  <h3>ещё один прикольный заголовок</h3>
+  <h1>Cтраница теста YTM</h1>
+  <h3>h3 заголовок</h3>
   <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Totam distinctio repellat illo excepturi iusto! Mollitia quibusdam est enim ex itaque ipsum, et reiciendis sapiente praesentium iure accusantium eaque laudantium consequatur quo nostrum iste. Eaque, delectus expedita illo maiores quia dignissimos! Distinctio ipsum quam perspiciatis ratione atque consectetur facilis ad earum.</p>
-  <button id="btnStandard">кнопка для стандартного тега</button>
-  <button class="btnAdvanced">кнопка для расширенного тега тега</button>
-  <button class="counter">просто счётчик кликов: 0</button>
-
+  <button class="counter">просто счётчик кликов - предположим iid: 0</button>
+  <p><b>Revenue:</b> <span id="revenue">10000$</span></p>
+  <p><b>Client_ID:</b> просто объявлен в глобальную переменную window.exampleClientID</p>
+  <label>Значение для переменной 'opt1'<input id="input1" type="text"></label>
+  <label>Значение для переменной 'opt2'<input id="input2" type="text"></label>
+  <div class="callTag">
+    <button id="btnStandard">кнопка для вызова стандартного тега</button>
+    <button class="btnAdvanced">кнопка для вызова расширенного тега c re + cid + iid + opt1 + opt2</button>
+  </div>
+  
   <script>
-    let counter = 0;
+    window.exampleClientID = 'AbCd-1234';
+    window.counter = 0;
 
     document.querySelector('.counter').addEventListener('click', e=> {
-      e.target.innerText = `просто счётчик кликов: ${Number(++counter)}`;
-
-      counter = String(counter);
+      e.target.innerText = `просто счётчик кликов - предположим iid: ${++counter}`;
     });
     
-    document.querySelector('#btnStandard').addEventListener('click', ()=> console.log('click btnStandard'));
-    document.querySelector('.btnAdvanced').addEventListener('click', ()=> console.log('click btnAdvanced'));
-
-
   </script>
 </body>
 </html>
